@@ -1,0 +1,60 @@
+\documentclass[11pt,fleqn,oneside]{book} % Default font size and left-justified equations
+
+% COMPILES THE COVER BACKGROUND IF 1 
+% DOESN'T COMPILE THE COVER BACKGROUND IF 0
+\newcommand{\showCover}{0} 
+
+\usepackage{fontawesome5}
+\usepackage{emoji}
+\usepackage[skip=0cm,labelfont=it,labelformat=empty]{subcaption}
+\usepackage[autostyle=false, style=english]{csquotes}
+\MakeOuterQuote{"}
+
+\newcommand*{\img}[1]{% 
+    \raisebox{-.4\baselineskip}{%
+        \includegraphics[
+        height=1.2\baselineskip,
+        width=1.2\baselineskip,
+        keepaspectratio,
+        ]{#1}%
+    }%
+}
+
+% =========================================================
+% Global settings
+\newcommand{\AUTHOR}{Simone Brunello}
+\newcommand{\CLIENT}{Client Name}
+\newcommand{\DATE}{\today}
+\newcommand{\VERSION}{1.0}
+\newcommand{\TITLE}{Optimization Techniques}
+\newcommand{\SUBTITLE}{University of Trento}
+\newcommand{\SUBJECT}{Demo}
+\newcommand{\URL}{https://github.com/federicobrancasi/Deep-Learning}
+
+\input{template/forta/main} % Commands of the template
+% =========================================================
+
+% COMPILES THE COVER BACKGROUND IF 1 
+% DOESN'T COMPILE THE COVER BACKGROUND IF 0
+\ifnum\showCover=0
+    \renewcommand{\coverpage}[5]{{\Huge\textbf{Cover Hidden}}
+    \textcolor{white}{#1, #2, #3, #4, #5}}
+\else
+    % show it
+\fi
+
+% Set Theme
+\togglethemedl 
+
+% \usepackage[autostyle=false, style=english]{csquotes}
+% \MakeOuterQuote{"}
+
+\begin{document}
+
+    \coverpage{\TITLE}{\SUBTITLE}{\AUTHOR}{\DATE}{\VERSION}
+
+    \newpage
+
+    
+
+\end{document}
