@@ -2,8 +2,9 @@
 
 % COMPILES THE COVER BACKGROUND IF 1 
 % DOESN'T COMPILE THE COVER BACKGROUND IF 0
-\newcommand{\showCover}{0} 
+\newcommand{\showCover}{1} 
 
+% \usepackage{array}
 \usepackage{fontawesome5}
 \usepackage{emoji}
 \usepackage[skip=0cm,labelfont=it,labelformat=empty]{subcaption}
@@ -19,6 +20,9 @@
         ]{#1}%
     }%
 }
+
+% --- libs ---
+
 
 % =========================================================
 % Global settings
@@ -51,10 +55,17 @@
 
 \begin{document}
 
+    % --- mathematical ---
+    \newtheorem{definition}{Definition}
+
+    \input{libs/annotations.tex}
+
     \coverpage{\TITLE}{\SUBTITLE}{\AUTHOR}{\DATE}{\VERSION}
 
     \newpage
 
-    
+    \pagestyle{fancy}
+
+    \input{content/introduction/introduction.tex}
 
 \end{document}

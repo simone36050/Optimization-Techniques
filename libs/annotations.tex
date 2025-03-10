@@ -1,0 +1,20 @@
+\definecolor{alazarin}{rgb}{0.90, 0.30, 0.23}
+\definecolor{cloud}{rgb}{0.92, 0.94, 0.95}
+\definecolor{darkgreen}{rgb}{0.15, 0.68, 0.38}
+
+
+\newcommand{\personnote}[3]{
+	{
+		\small{\bf{
+				\textcolor{black}{$\blacktriangleright$} 
+				\textcolor{black}{\fbox{#1}} 
+				\textcolor{#3}{{#2}}
+				\textcolor{black}{$\blacktriangleleft$}}
+		}
+	}
+}
+
+\newcommand{\simone}[1]{\personnote{Simone B.}{#1}{alazarin}}
+\newcommand{\simoneF}[1]{\personnote{Simone B.}{#1}{lightgray}}
+\newcommand{\simoneReplace}[2]{\textcolor{blue}{\sout{#1}}\textcolor{orange}{#2}}
+
