@@ -2,7 +2,7 @@
 
 % COMPILES THE COVER BACKGROUND IF 1 
 % DOESN'T COMPILE THE COVER BACKGROUND IF 0
-\newcommand{\showCover}{1} 
+\newcommand{\showCover}{0} 
 
 % \usepackage{array}
 \usepackage{fontawesome5}
@@ -10,6 +10,10 @@
 \usepackage[skip=0cm,labelfont=it,labelformat=empty]{subcaption}
 \usepackage[autostyle=false, style=english]{csquotes}
 \MakeOuterQuote{"}
+\usepackage{pgfplots}
+\usepackage{changepage}
+\usepackage[overload]{textcase}
+
 
 \newcommand*{\img}[1]{% 
     \raisebox{-.4\baselineskip}{%
@@ -22,6 +26,9 @@
 }
 
 % --- libs ---
+
+
+
 
 
 % =========================================================
@@ -38,6 +45,8 @@
 \input{template/forta/main} % Commands of the template
 % =========================================================
 
+\usepackage{cleveref}
+
 % COMPILES THE COVER BACKGROUND IF 1 
 % DOESN'T COMPILE THE COVER BACKGROUND IF 0
 \ifnum\showCover=0
@@ -53,10 +62,26 @@
 % \usepackage[autostyle=false, style=english]{csquotes}
 % \MakeOuterQuote{"}
 
+\pgfplotsset{compat=newest}
+
 \begin{document}
+
+    \newtheoremstyle{theoremdd}% name of the style to be used
+    {\topsep}% measure of space to leave above the theorem. E.g.: 3pt
+    {\topsep}% measure of space to leave below the theorem. E.g.: 3pt
+    {}% name of font to use in the body of the theorem
+    {0pt}% measure of space to indent
+    {\bfseries}% name of head font
+    {. }% punctuation between head and body
+    { }% space after theorem head; " " = normal interword space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+    \theoremstyle{theoremdd}
+
 
     % --- mathematical ---
     \newtheorem{definition}{Definition}
+    \newtheorem{theorem}{Theorem}
 
     \input{libs/annotations.tex}
 
@@ -66,6 +91,8 @@
 
     \pagestyle{fancy}
 
-    \input{content/introduction/introduction.tex}
+    \input{content/optimization_problems/op.tex}
+    \input{content/optimization_algorithms.tex}
+    \input{content/one_dimensional_search/ods.tex}
 
 \end{document}

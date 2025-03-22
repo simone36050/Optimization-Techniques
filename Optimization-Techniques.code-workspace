@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"latex-workshop.latex.recipes": [
+			{
+			    "name": "lualatex",
+			    "tools": [
+			        "lualatex"
+			        // "biber",
+			        // "lualatex"
+			    ]
+			},
+		],
+		"latex-workshop.latex.tools": [
+			{
+			    "name": "lualatex",
+			    "command": "lualatex",
+			    "args": [
+			        "-synctex=1",
+			        "-interaction=nonstopmode",
+			        "-file-line-error",
+			        "-pdf",
+			        "%DOC%"
+			    ]
+			}
+		]
+	}
+}
