@@ -544,6 +544,109 @@ Conventionally, we use the \( X \)-axis as the domain (the "input" of the functi
     \end{tikzpicture}    
 \end{center}
 
+In one dimension, it is possible to introduce the concept of derivative, which indicates the slope of the function point by point (see \Cref{sec:op.derivative}).
+
+\subsection{2-dimentions}
+\label{sec:op.dimensions.two}
+
+Remember the default wallpaper in Windows XP? The one with the grass hills? Imagine we want to represent the height of each point with a function, in other words, given a coordinate we want the function to tell us how high the terrain is at that point.
+Coordinates are the domain or input of the function, while height is the co-domain or output of the function. The coordinates cannot be represented by one real number, but two are needed.
+
+The domain consists of two real numbers in a tuple, e.g. \( (\frac{1}{2}, -4) \). So it is \( \mathbb{R} \times \mathbb{R} \). Instead, the co-domain remains a real number \( \mathbb{R} \). A two-dimensional function is \( f : (\mathbb{R} \times \mathbb{R}) \rightarrow \mathbb{R} \), which can be also written as \( f : \mathbb{R}^2 \rightarrow \mathbb{R} \).
+
+The two-element tuple used as input is represented as \( x \in \mathbb{R}^2 \) and its components are \( x = (x_1, x_2) \). Then we will use \( f(x) \) and \(f(x_1, x_2) \) interchangeably. It can be seen that an element of the domain is nothing else than a vector \( \vec{x} = (x_1, x_2) \) that, starting from the origin \( \vec{O} = (0,0) \), connects the point \( (x_1, x_2) \).
+
+
+\begin{center}
+    \footnotesize
+    \begin{tikzpicture}
+        \begin{axis}[
+              ticks=none,
+              axis lines=left,
+              axis x line=bottom,
+              axis y line=center,
+              width=12cm,
+              clip=false,
+              samples=44,
+              ylabel=\( X_1 \),
+              xlabel=\( X_2 \),
+              zlabel=\( Y \),
+              % x axis line style={yshift=-1cm},
+              axis line style ={very thick},
+              declare function={f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;}
+          ]
+              \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};
+      
+              \addplot3[
+                  dashed
+              ] coordinates {
+                  (2,0,0) 
+                  (2,2,0)
+                  (0,2,0)
+              };
+      
+              \node at (axis cs:2,0,0) [anchor=north, color=black] {\( x_2 \)};
+              \node at (axis cs:0,2,0) [anchor=south east, color=black] {\( x_1 \)};
+              \node at (axis cs:2,2,0) [anchor=west, color=black] {\( x \)};
+      
+              \addplot3[
+                  dashed
+              ] coordinates {
+                  (2,2,0)
+                  (2,2,2)
+              };
+      
+              \node at (axis cs:2,2,2) [anchor=west, color=black] {\( y = f(x) = f(x_1, x_2) \)};
+
+              \draw[arrow, myblue, line width=0.5pt] (0,0) -- (2,2);
+              \node at (axis cs:1,1,0) [anchor=south, color=black] {\( \vec{x} \)};
+      
+        \end{axis}
+      \end{tikzpicture}      
+\end{center}  
+
+Vedere la funzione come cerci concentrici in base alla pendenza
+  
+
+\begin{center}
+    \footnotesize
+    \begin{tikzpicture}
+        \begin{axis}[
+              ticks=none,
+              axis lines=left,
+              axis x line=bottom,
+              axis y line=center,
+              width=12cm,
+              clip=false,
+              samples=44,
+              ylabel=\( X_1 \),
+              xlabel=\( X_2 \),
+              zlabel=\( Y \),
+              clip mode   = individual,          
+              % x axis line style={yshift=-1cm},
+              axis line style ={very thick},
+              declare function={f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;}
+          ]
+              \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};
+            
+        \end{axis}
+      \end{tikzpicture}      
+\end{center}  
+
+% \begin{tikzpicture}
+%     \def\myfunction(#1,#2){cos(deg(#1)*0.8)*cos(deg(#2)*0.6)*exp(0.1*(#1))+3}
+%     \def\scalingfactor{0.2} % Adjust for visual scale
+   
+  
+%     \foreach \i in {0, 5, ..., 10} % Angle in degrees
+%     {
+%     \pgfmathsetmacro{\radius}{\scalingfactor * \myfunction(\i,0)}
+%     \draw (0,0) +(\i:\radius) circle (1pt); % Draw a small circle
+%     }
+%    \end{tikzpicture}
+  
+
+
 % \section[From 1 to \( n \) dimentions]{From 1 to many dimentions}
 
 % \simone{Cambiare funzione, mostrare la derivata in diversi punti in un massimo e mostrare la funzione risultate}
