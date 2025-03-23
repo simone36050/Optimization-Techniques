@@ -2,7 +2,8 @@
 
 % COMPILES THE COVER BACKGROUND IF 1 
 % DOESN'T COMPILE THE COVER BACKGROUND IF 0
-\newcommand{\showCover}{0} 
+\newcommand{\showCover}{1} 
+% \usepackage{algpseudocode}
 
 % \usepackage{array}
 \usepackage{fontawesome5}
@@ -13,6 +14,11 @@
 \usepackage{pgfplots}
 \usepackage{changepage}
 \usepackage[overload]{textcase}
+
+% \usepackage{algorithm}
+% \usepackage{algpseudocode}
+% \usepackage[]{algorithm2e}
+
 
 
 \newcommand*{\img}[1]{% 
@@ -27,7 +33,7 @@
 
 % --- libs ---
 
-
+\usepackage{pythonhighlight}
 
 
 
@@ -92,7 +98,7 @@
     \pagestyle{fancy}
 
     \input{content/optimization_problems/op.tex}
-    \input{content/optimization_algorithms.tex}
-    \input{content/one_dimensional_search/ods.tex}
+    % \input{content/optimization_algorithms.tex}
+    % \input{content/one_dimensional_search/ods.tex}
 
 \end{document}

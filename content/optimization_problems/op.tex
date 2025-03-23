@@ -4,35 +4,41 @@
 An optimization problem involves finding the best element among a set of possible alternatives that meet predetermined criteria.
 Optimization problems span many domains, including physics, business, and logistics.
 
+Some examples of optimization problems include:
+
 \textbf{Rocket.} You have to launch a rocket and land it at a certain point, you have to decide the angle with respect to the ground at which it is launched.
 
-\begin{tikzpicture}
-%     \draw[fill=mygreen, mygreen] (0, 0) rectangle (5, 0.25);
-    \begin{axis}[
-            hide axis,
-            ymin=-2, ymax=2,
-            xmin=-10, xmax=10
-        ]
-        \addplot [line width=2pt, domain=-10:10, samples=100, gray] {-1/20*x^2+1};
-    \end{axis}
-\end{tikzpicture}
-\simone{TODO: graph}
+% \begin{tikzpicture}
+% %     \draw[fill=mygreen, mygreen] (0, 0) rectangle (5, 0.25);
+%     \begin{axis}[
+%             hide axis,
+%             ymin=-2, ymax=2,
+%             xmin=-10, xmax=10
+%         ]
+%         \addplot [line width=2pt, domain=-10:10, samples=100, gray] {-1/20*x^2+1};
+%     \end{axis}
+% \end{tikzpicture}
+% \simone{TODO: graph}
 
 \textbf{Travel Salesman's Problem.} Given a list of cities and the distances between each pair of cities, what is the shortest possible route that visits each city exactly once and returns to the starting city?
-\simone{TODO: graph}
+% \simone{TODO: graph}
 
 
 \textbf{Knapsack.} Given a set of items, each with a weight and a value, determine which items to include in the collection so that the total weight is less than or equal to a given limit and the total value is as large as possible.
-\simone{TODO: graph}
+% \simone{TODO: graph}
 
 \textbf{Position of a Robot.} We have a robot that needs to figure out where it is without a GPS antenna. Antennas have been installed nearby in known locations that can detect the angle between the line connecting the robot to the antenna and the line indicating the direction of the wheels. How can this data be used to calculate the robot's position?
-\simone{TODO: graph}
+% \simone{TODO: graph}
 
 \textbf{Training of Neural Network.} After all, neural networks are complicated optimization problems.
-\simone{TODO: graph}
+% \simone{TODO: graph}
+
+\simone{TODO: mettere dei disegni per gli esempi precedenti.}
 
 Optimization consists of four steps:
 \begin{itemize}
+    \setlength\itemsep{.5em}
+
     \item \textbf{Modeling}: in order to work on a problem with a computer, it is necessary to translate the problem into mathematical objects (variables, sets, functions, etc.) that represent it.
     
     \item \textbf{Solving}: Different problems have different characteristics and require analysis to determine the best technique. For example: 
@@ -68,6 +74,8 @@ A good model must be:
 
 The modeling process involves three steps:
 \begin{enumerate}
+    \setlength\itemsep{.5em}
+
     \item Identification of \textbf{state variables} (or decision variables): are things that can change in a problem (such as a robot's angle and a rocket's initial velocity). Decisione variables are represented as a column vector \( \mathbb{R}^n \) denoted by \( x \). For example, the variable of a car might be:
     \begin{align*}
         y &= \begin{bmatrix}
@@ -108,9 +116,9 @@ The modeling process involves three steps:
         \draw[->, line width=2px] (8, 3.5) -- (9, 3.5);
 
         % builded box
-        \draw[fill=boxcolor, line width=1pt] (10,3) rectangle (12, 4);
-        \draw[fill=boxcolor, line width=1pt] (12,3) -- (13, 4) -- (13, 5) -- (12, 4) -- (12, 3);
-        \draw[fill=boxcolor, line width=1px] (10, 4) -- (12, 4) -- (13, 5) -- (11, 5) -- (10, 4);
+        \draw[fill=boxcolor, line width=1pt, rounded corners=0.125px] (10,3) rectangle (12, 4);
+        \draw[fill=boxcolor, line width=1pt, rounded corners=0.125px] (12,3) -- (13, 4) -- (13, 5) -- (12, 4) -- (12, 3);
+        \draw[fill=boxcolor, line width=1px, rounded corners=0.125px] (10, 4) -- (12, 4) -- (13, 5) -- (11, 5) -- (10, 4);
 
         % quotes of closed box
         \draw[|<->|] (10, 2.5) -- node[below=1mm]{\( w \)} (12, 2.5);
@@ -137,7 +145,9 @@ The modeling process involves three steps:
 \label{sec:op.contraints}
 
 As anticipated in \Cref{sec:op.modeling}, not all possible solutions are good. Depending on the actual problem we are solving, there may be limitations, for example:
+\vspace{-0.8em}
 \begin{itemize}
+    \setlength\itemsep{.2em}
     \item we need to calculate the optimal speed of a train, but we cannot choose a negative speed;
     \item to allocate a portfolio, we have to decide the percentage of stocks and bonds based on different parameters, the sum of bonds and stocks must be 100\%;
     \item we have to find the best arrangement of packages in a van. The total weight must not exceed the permitted weight of the vehicle.
@@ -149,7 +159,9 @@ Constraints take the form of real-valued functions in two possible forms, let \(
     g(x) \leq 0  && \mathrm{inequality~constraints}
 \end{align*}
 
-Formally, given a set of functions (called \textit{equality constraints}) \( \{ h_i(x) \}_m \) where \( m \) is the number of equality constraints, and a set of functions (called \textit{inequality contraints}) \( \{ g_j \}_j \) where \( j \) is the number of inequality contraints, then the \textit{feasible set} \( \Omega \subseteq \mathbb{R}^n \) is
+Formally, let \( m \) the number of \textit{equality constraints} and \( p \) the number of \textit{inequality contraints}, the \textit{feasible set} \( \Omega \subseteq \mathbb{R}^n \) is
+
+% Formally, given a set of functions (called \textit{equality constraints}) \( \{ h_i(x) \}_m \) where \( m \) is the number of equality constraints, and a set of functions (called \textit{inequality contraints}) \( \{ g_j \}_j \) where \( j \) is the number of inequality contraints, then the \textit{feasible set} \( \Omega \subseteq \mathbb{R}^n \) is
 \[ 
     \Omega = \left\{ 
         x \in \mathbb{R}^n   
@@ -378,7 +390,7 @@ The minimum may not exist. In this case, the computer will produce a result that
 
 There are three reasons why the minimum may not exist:
 
-\begin{minipage}{0.33\linewidth}
+\begin{minipage}{0.32\linewidth}
     \centering
     \begin{tikzpicture}
         \begin{axis}[axis lines=middle, 
@@ -453,6 +465,8 @@ Minimum? Huh. I learned how to do this in Calculus 1! I calculate the derivative
 
 Sorry, but no. That is, the method is correct, but it does not take into account four problems:
 \begin{itemize}
+    \setlength\itemsep{.5em}
+
     \item How to calculate the derivative? The function is an objective function that models a problem in reality. Dream of the (relatively) easy to derive functions you find in Calculus 1, reality is not a polynomial. Calculating from the derivative is a difficult problem, even for a computer, if the function is complex. 
     
     \item If the problem seems complex for one function in one variable, let alone thousands! Calculating the gradient, the equivalent of the derivative in more than one dimension, is a computationally time-consuming task.
@@ -556,10 +570,9 @@ The domain consists of two real numbers in a tuple, e.g. \( (\frac{1}{2}, -4) \)
 
 The two-element tuple used as input is represented as \( x \in \mathbb{R}^2 \) and its components are \( x = (x_1, x_2) \). Then we will use \( f(x) \) and \(f(x_1, x_2) \) interchangeably. It can be seen that an element of the domain is nothing else than a vector \( \vec{x} = (x_1, x_2) \) that, starting from the origin \( \vec{O} = (0,0) \), connects the point \( (x_1, x_2) \).
 
-
 \begin{center}
     \footnotesize
-    \begin{tikzpicture}
+    \begin{tikzpicture}[remember picture]
         \begin{axis}[
               ticks=none,
               axis lines=left,
@@ -605,53 +618,257 @@ The two-element tuple used as input is represented as \( x \in \mathbb{R}^2 \) a
       \end{tikzpicture}      
 \end{center}  
 
-Vedere la funzione come cerci concentrici in base alla pendenza
-  
+To visualize functions in two dimensions, the contour representation can be used; planes parallel to the plane passing through the \( X_1 \) and \( X_2 \) axes are introduced and the intersections are displayed. The color depends on the height of the plane. Another interesting representation in a plane of a function in two variables is that on the basis of color: the colder the color, the lower the value of the function, similarly, the warmer the higher the value. The previous function is represented by contour lines on the left and by color on the right.
 
-\begin{center}
-    \footnotesize
+\begin{minipage}{0.45\linewidth}
+    \centering
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}
+            [
+                width=\linewidth,
+                % title={Contour plot, view from top},
+                view={0}{90},
+                samples=150,
+                contour/labels=false,
+                xticklabel=\empty,
+                yticklabel=\empty,
+            ]
+            \addplot3[
+                contour gnuplot={levels={1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25}},
+                domain=0:8
+            ] {cos(deg(x)*0.8)*cos(deg(y)*0.6)*exp(0.1*x)+3};
+            \end{axis}
+            \end{tikzpicture}
+    \end{center}
+\end{minipage}
+\begin{minipage}{0.45\linewidth}
+    \centering
     \begin{tikzpicture}
         \begin{axis}[
-              ticks=none,
-              axis lines=left,
-              axis x line=bottom,
-              axis y line=center,
-              width=12cm,
-              clip=false,
-              samples=44,
-              ylabel=\( X_1 \),
-              xlabel=\( X_2 \),
-              zlabel=\( Y \),
-              clip mode   = individual,          
-              % x axis line style={yshift=-1cm},
-              axis line style ={very thick},
-              declare function={f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;}
-          ]
-              \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};
-            
+                width=\linewidth,
+                ticks=none,
+                axis lines=left,
+                axis x line=bottom,
+                axis y line=center,
+                view={0}{90},
+                clip=false,
+                samples=44,
+                ylabel=\( X_1 \),
+                xlabel=\( X_2 \),
+                zlabel=\( Y \),
+                % x axis line style={yshift=-1cm},
+                axis line style ={very thick},
+                declare function={f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;}
+            ]
+                \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};     
         \end{axis}
-      \end{tikzpicture}      
-\end{center}  
+      \end{tikzpicture}    
+\end{minipage}
 
-% \begin{tikzpicture}
-%     \def\myfunction(#1,#2){cos(deg(#1)*0.8)*cos(deg(#2)*0.6)*exp(0.1*(#1))+3}
-%     \def\scalingfactor{0.2} % Adjust for visual scale
-   
-  
-%     \foreach \i in {0, 5, ..., 10} % Angle in degrees
-%     {
-%     \pgfmathsetmacro{\radius}{\scalingfactor * \myfunction(\i,0)}
-%     \draw (0,0) +(\i:\radius) circle (1pt); % Draw a small circle
-%     }
-%    \end{tikzpicture}
-  
+\paragraph{Gradient.} As with one-variable functions, we want to know the slope of the function at a given point; to do this, we introduced the concept of derivative. For functions with two (or more) dimensions, we use the concept of gradient \( \nabla f(x_1, x_2) \). 
+
+To understand whether and how the function grows or decreases, we need to solve the problem one dimension at a time. We compute the derivative in dimensions \( X_1 \) and \( X_2 \) separately.
+
+{   
+    \LARGE
+    \begin{itemize}
+        \setlength\itemsep{1em}
+
+        \vspace{2.5em}
+
+        \item \( \frac{\partial f}{\partial \textcolor{myred}{x_1}}(\textcolor{myred}{x_1}, \textcolor{mygreen}{x_2}) = \lim\limits_{h \rightarrow 0} \frac{f(\tikzmarkk{X1h}\textcolor{myred}{x_1 + h}, \tikzmarkk{X2}\textcolor{mygreen}{x_2}) - f(\textcolor{myred}{x_1}, \textcolor{mygreen}{x_2})}{h} \)
+        \begin{tikzpicture}[overlay,remember picture]
+            \node (X1h_desc) [above of = X1h, node distance = 3em, right=1em, anchor=west] {\footnotesize \textsf{\textcolor{myred}{calculates how the value of the function changes when \( x_1 \) is varied slightly}}};
+            \draw[<-, in=180, out=90] (X1h.south) ++ (1em,0.5em) to (X1h_desc.west);
+        
+            \node (X2_desc) [above of = X2, node distance = 2em, right=.5em, anchor=west] {\footnotesize \textsf{\textcolor{mygreen}{treat \( x_2 \) as a constant}}};
+            \draw[<-, in=180, out=90] (X2.south) ++ (.25em,0.5em) to (X2_desc.west);
+
+        \end{tikzpicture}
+        
+        \item \( \frac{\partial f}{\partial \textcolor{myred}{x_2}}(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2}) = \lim\limits_{h \rightarrow 0} \frac{f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2 + h}) - f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2})}{h} \)
+    \end{itemize}
+}
+
+In order to obtain the gradient, we construct a vector in which each component represents how the function varies in one of the two dimensions; the variation is exactly the partial derivative calculated above.
+{
+    \Large
+    \[
+    \nabla f(x_1, x_2) =
+    \begin{bmatrix}
+        \frac{\partial f}{\partial \textcolor{myred}{x_1}}(\textcolor{myred}{x_1}, \textcolor{mygreen}{x_2}) \\
+        %
+        \frac{\partial f}{\partial \textcolor{myred}{x_2}}(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2})
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        \lim\limits_{h \rightarrow 0} \frac{f(\tikzmarkk{X1h}\textcolor{myred}{x_1 + h},\textcolor{mygreen}{x_2}) - f(\textcolor{myred}{x_1}, \textcolor{mygreen}{x_2})}{h} \\
+        %
+        \lim\limits_{h \rightarrow 0} \frac{f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2 + h}) - f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2})}{h}
+    \end{bmatrix}
+\]
+}
+
+Going back to the hill example, the gradient represents the direction in which a drop of water would fall if it were dropped exactly at the point where the derivative is calculated.
+
+\begin{center}
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=0.8\linewidth,
+                ticks=none,
+                axis lines=left,
+                axis x line=bottom,
+                axis y line=center,
+                clip=false,
+                % view={0}{90},
+                samples=44,
+                ylabel=\( X_1 \),
+                xlabel=\( X_2 \),
+                zlabel=\( Y \),
+                % x axis line style={yshift=-1cm},
+                axis line style ={very thick},
+                declare function={
+                    f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;
+                    dfX(\x,\y) = (-0.8*sin(deg(\x)*0.8)*cos(deg(\y)*0.6) + 0.1*cos(deg(\x)*0.8)*cos(deg(\y)*0.6)) * exp(0.1*\x);
+                    dfY(\x,\y) = -0.6*cos(deg(\x)*0.8)*sin(deg(\y)*0.6)*exp(0.1*\x);    
+                }
+            ]
+                \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};     
+    
+                \addplot3[
+                    quiver={
+                        u={dfX(x,y)},
+                        v={dfY(x,y)},
+                        w=0, % since it's a 2D gradient
+                        scale arrows=0.5,
+                    },
+                    -stealth, line width=2pt, black, samples=12, domain=0.5:7.5
+                ] {f(x,y)};
+                    
+        \end{axis}
+    \end{tikzpicture} 
+\end{center}
+
+\begin{minipage}{0.49\linewidth}
+    \centering
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}
+            [
+                width=\linewidth,
+                % title={Contour plot, view from top},
+                view={0}{90},
+                samples=150,
+                contour/labels=false,
+                xticklabel=\empty,
+                yticklabel=\empty,
+                declare function={
+                    f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;
+                    dfX(\x,\y) = (-0.8*sin(deg(\x)*0.8)*cos(deg(\y)*0.6) + 0.1*cos(deg(\x)*0.8)*cos(deg(\y)*0.6)) * exp(0.1*\x);
+                    dfY(\x,\y) = -0.6*cos(deg(\x)*0.8)*sin(deg(\y)*0.6)*exp(0.1*\x);    
+                }
+            ]
+                \addplot3[
+                    contour gnuplot={levels={1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4, 4.25}},
+                    domain=0:8
+                ] {f(x,y)};
+
+                \addplot3[
+                    quiver={
+                        u={dfX(x,y)},
+                        v={dfY(x,y)},
+                        w=0, % since it's a 2D gradient
+                        scale arrows=0.5,
+                    },
+                    -stealth, line width=1pt, black, samples=12, domain=0.5:7.5
+                ] {f(x,y)};
+
+            \end{axis}
+        \end{tikzpicture}
+    \end{center}
+\end{minipage}
+%
+\begin{minipage}{0.5\linewidth}
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=\linewidth,
+                ticks=none,
+                axis lines=left,
+                axis x line=bottom,
+                axis y line=center,
+                clip=false,
+                view={0}{90},
+                samples=44,
+                ylabel=\( X_1 \),
+                xlabel=\( X_2 \),
+                zlabel=\( Y \),
+                % x axis line style={yshift=-1cm},
+                axis line style ={very thick},
+                declare function={
+                    f(\x,\y)=cos(deg(\x)*0.8)*cos(deg(\y)*0.6)*exp(0.1*\x)+3;
+                    dfX(\x,\y) = (-0.8*sin(deg(\x)*0.8)*cos(deg(\y)*0.6) + 0.1*cos(deg(\x)*0.8)*cos(deg(\y)*0.6)) * exp(0.1*\x);
+                    dfY(\x,\y) = -0.6*cos(deg(\x)*0.8)*sin(deg(\y)*0.6)*exp(0.1*\x);    
+                }
+            ]
+                \addplot3[surf, opacity=0.6, domain=0:8]{f(x,y)};     
+    
+                \addplot3[
+                    quiver={
+                        u={dfX(x,y)},
+                        v={dfY(x,y)},
+                        w=0, % since it's a 2D gradient
+                        scale arrows=0.5,
+                    },
+                    -stealth, line width=1.5pt, black, samples=12, domain=0.5:7.5
+                ] {f(x,y)};
+                    
+        \end{axis}
+    \end{tikzpicture} 
+\end{minipage}
+
+\subsection[many dimensions]{\( n \)-dimension}
+\label{sec:op.dimensions.many}
+
+Functions in more than two dimensions are difficult (if not impossible) to represent graphically, but it is still possible to extend the concepts seen in \Cref{sec:op.dimensions.two} for two dimensions to an arbitrary number of dimensions.
 
 
-% \section[From 1 to \( n \) dimentions]{From 1 to many dimentions}
+Let \( n \) be the dimensions, \( \mathbb{R}^n \) the domain, and \( \mathbb{R} \) the co-domain. An element of the domain is a tuple \( x=(x_1, x_2, ..., x_n) \), where \( x \in \mathbb{R}^n \). A function \( f \) in  \( n \) dimensions is \( f : \mathbb{R}^n \rightarrow \mathbb{R} \).
 
-% \simone{Cambiare funzione, mostrare la derivata in diversi punti in un massimo e mostrare la funzione risultate}
+We can compute the partial derivative for all n dimensions:
+{   
+    \Large
+    \begin{itemize}
+        \setlength\itemsep{1em}
 
+        \item \( \frac{\partial f}{\partial \textcolor{myred}{x_1}}(x) = \lim\limits_{h \rightarrow 0} \frac{f(\textcolor{myred}{x_1 + h}, \textcolor{mygreen}{...}, \textcolor{mygreen}{x_2}) - f(\textcolor{myred}{x_1}, \textcolor{mygreen}{...}, \textcolor{mygreen}{x_2})}{h} \)
+        
+        \item \( \frac{\partial f}{\partial \textcolor{myred}{x_2}}(x) = \lim\limits_{h \rightarrow 0} \frac{f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2 + h}, \textcolor{mygreen}{...}, \textcolor{mygreen}{x_n}) - f(\textcolor{mygreen}{x_1}, \textcolor{myred}{x_2}, \textcolor{mygreen}{...}, \textcolor{mygreen}{x_n})}{h} \)
+        
+        \item ...
+        
+        \item \( \frac{\partial f}{\partial \textcolor{myred}{x_n}}(x) = \lim\limits_{h \rightarrow 0} \frac{f(\textcolor{mygreen}{x_1}, \textcolor{mygreen}{...}, \textcolor{myred}{x_n + h}) - f(\textcolor{mygreen}{x_1}, \textcolor{mygreen}{...}, \textcolor{myred}{x_n})}{h} \)
+    \end{itemize}
+}
 
-% \subsection{Gradient}
+We can use partial derivatives to define the gradient.
+\begin{remark}{black}{white}
+    \begin{definition}[Gradient]
+        Let \( f : \mathbb{R}^n \rightarrow \mathbb{R} \) be a function in \( n \) dimensions. The gradient is:
+        {
+            \Large
+            \[
+                \nabla f(x) = 
+                \begin{bmatrix}
+                    \frac{\partial f}{\partial \textcolor{myred}{x_1}}(x) \\
+                    \frac{\partial f}{\partial \textcolor{myred}{x_2}}(x) \\
+                    \vdots \\
+                    \frac{\partial f}{\partial \textcolor{myred}{x_n}}(x)
+                \end{bmatrix}
+            \]
+        }
+    \end{definition}
+\end{remark}
 
-% \simone{Ragionare a spostare dopo questo pezzo}
+\input{content/optimization_problems/lab.tex}
